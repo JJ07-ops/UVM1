@@ -17,7 +17,7 @@ class driver extends uvm_driver;
   endfunction
   
   task run();
-    `uvm_warning("TB_TOP", "Hello World");
+    `uvm_warning("DRV1", "Hello World");
   endtask
 endclass
 
