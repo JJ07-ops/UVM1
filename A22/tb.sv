@@ -29,17 +29,6 @@ class my_object extends uvm_object;
     super.new(path);
   endfunction
   
-  //print function
-  virtual function void do_print(uvm_printer printer);
-    
-    super.do_print(printer);
-    
-    printer.print_field_int("a",a,$bits(a),UVM_DEC);
-    printer.print_field_int("b",b,$bits(b),UVM_DEC);
-    printer.print_field_int("c",c,$bits(c),UVM_DEC);
-    
-  endfunction
-  
   //do compare
   virtual function bit do_compare(uvm_object rhs, uvm_comparer comparer);
     my_object temp;
@@ -80,12 +69,13 @@ module tb;
   initial begin
     obj1 = my_object::type_id::create("obj1");
     obj1.randomize();
-    `uvm_info("TB_TOP", $sformatf("obj1 : a : %0d b : %0d c : %0d",obj1.a,obj1.b,obj1.c), UVM_NONE);
-    //obj1.print();
+    //`uvm_info("TB_TOP", $sformatf("obj1 : a : %0d b : %0d c : %0d",obj1.a,obj1.b,obj1.c), UVM_NONE);
+    obj1.print();
     
     $cast(obj2, obj1.clone());
-    `uvm_info("TB_TOP", $sformatf("obj2 : a : %0d b : %0d c : %0d",obj2.a,obj2.b,obj2.c), UVM_NONE);
-    //obj2.print();
+    obj2.set_name("obj2");
+    //`uvm_info("TB_TOP", $sformatf("obj2 : a : %0d b : %0d c : %0d",obj2.a,obj2.b,obj2.c), UVM_NONE);
+    obj2.print();
     
     status = obj2.compare(obj1);
     `uvm_info("TB_TOP", $sformatf("status : %0d",status), UVM_NONE);
