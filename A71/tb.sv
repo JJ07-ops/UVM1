@@ -36,7 +36,7 @@ endclass
 ///////////////////////////////////////////////////////////////
  
 class COMPA extends uvm_component;
- `uvm_component_utils(COMPA);
+ `uvm_component_utils(COMPA)
   
   transaction data;
   
@@ -88,7 +88,7 @@ endclass
 //////////////////////////////////////////////////////////////////////////////
 
 class env extends uvm_env;
-  `uvm_component_utils(env); 
+  `uvm_component_utils(env)
   
   COMPA cmpA;
   COMPB cmpB;
@@ -113,7 +113,7 @@ endclass
 //////////////////////////////////////////////////////////////////////////////
  
 class test extends uvm_test;
- `uvm_component_utils(test);
+ `uvm_component_utils(test)
   
   env e;
   
